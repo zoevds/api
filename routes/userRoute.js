@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   try {
     con.query("SELECT * FROM users", (err, result) => {
       if (err) throw err;
-      res.send({ id: req.params.id });
+      res.send(result);
     });
   } catch (error) {
     console.log(error);
