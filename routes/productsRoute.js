@@ -37,7 +37,33 @@ router.post("/", (req, res) => {
   } = req.body;
   try {
     con.query(
-      `insert into products (sku,name,price,weight,descriptions,thumbnail,image, category,create_date,stock ) values ('${sku}','${name}', '${price}','${weight}','${descriptions}', '${thumbnail}', '${image}','${category}','${create_date}','${stock}')`,
+      `INSERT into products (sku,name,price,weight,descriptions,thumbnail,image, category,create_date,stock ) values ('${sku}','${name}', '${price}','${weight}','${descriptions}', '${thumbnail}', '${image}','${category}','${create_date}','${stock}')`,
+      (err, result) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+// PUT - EDIT PRODUCTS
+router.put("/:id", (req, res) => {
+  const {
+    sku,
+    name,
+    price,
+    weight,
+    descriptions,
+    thumbnail,
+    image,
+    category,
+    create_date,
+    stock,
+  } = req.body;
+  try {
+    con.query(
+      `UPDATE products SET sku="${sku}",name="${name}",price="${price}",weight="${weight}",descriptions="${descriptions}",thumbnail="${thumbnail}" ,image="${image}" ,category="${category}" ,create_date="${create_date}" ,stock="${stock}"WHERE product_id=${req.params.id}`,
       (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -48,4 +74,18 @@ router.post("/", (req, res) => {
   }
 });
 
+// DELETE PRODUCTS
+router.delete("/:id", (req, res) => {
+  try {
+    con.query(
+      `DELETE from products WHERE product_id="${req.params.id}"`,
+      (err, result) => {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = router;

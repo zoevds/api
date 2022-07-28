@@ -7,6 +7,8 @@ const userRoute = require("./routes/userRoute");
 const productsRoute = require("./routes/productsRoute");
 const ordersRoute = require("./routes/ordersRoute");
 
+const categoriesRoute = require("./routes/categoriesRoute");
+
 // Configure Server
 const app = express(); // Initialize express as an app variable
 app.set("port", process.env.PORT || 6969); // Set the port
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
 app.use("/users", userRoute);
 app.use("/products", productsRoute);
 app.use("/orders", ordersRoute);
+
+app.use("/categories", categoriesRoute);
 
 // Set up server to start listening for requests
 app.listen(app.get("port"), () => {
