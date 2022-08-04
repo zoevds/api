@@ -29,9 +29,7 @@ app.use("/index.html", express.static(__dirname + "/index.html"));
 
 // This is where we check URLs and Request methods to create functionality
 // GET '/' is always what will be displayed on the home page of your application
-app.get("/", (req, res) => {
-  res.json({ msg: "Welcome" });
-});
+app.get("/", (req, res) => {});
 // Use individual routes when visiting these URLS
 app.use("/users", userRoute);
 app.use("/products", productsRoute);
