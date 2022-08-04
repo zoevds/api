@@ -75,10 +75,31 @@
         </div>
       </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    async function register() {
+      e.preventDefault();
+      const response = await fetch(
+        "https://api-exampleeeeee.herokuapp.com//users/register",
+        {
+          method: "post",
+          body: JSON.stringify({
+            email: document.querySelector("#email").value,
+            password: document.querySelector("#password").value,
+          }),
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+  </script>
 </html>
