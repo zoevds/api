@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+   
+      <!-- <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Full Name</th>
+            <th>Billing Address</th>
+            <th>Default Shipping Address</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>User Type</th>
+          </tr>
+          <tr>
+        </tr>
+    </thead>
+</table> -->
+    <div id="users"></div>
+    </div>
+    <script>
+      let users = [];
+      const uContainer = document.querySelector("#users");
+      fetch("http://localhost:6969/users")
+        .then((res) => res.json())
+        .then((data) => {
+          users = data;
+          console.log(data);
+          showusers(users);
+        });
+      function showusers(users) {
+        uContainer.innerHTML = "";
+        users.forEach((user) => {
+          uContainer.innerHTML += `
+    <div class="user">
+      <tr>
+    <td>${user.email}</td>
+    <td>${user.password} - ${user.full_name}</td>
+    <td>${user.phone}</td>
+     <td>${user.billing_address}</td>
+      <td>${user.default_shipping_address}</td>
+       <td>${user.countdy}</td>
+        <td>${user.user_type}</td>
+        </tr>
+         </div>
+        `;
+        });
+      }
+    </script>
+  </body>
+</html>
