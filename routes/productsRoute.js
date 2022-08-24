@@ -22,6 +22,7 @@ router.get("/:id", (req, res) => {
     res.status(400).send(error);
   }
 });
+// get all products
 router.post("/", (req, res) => {
   const {
     sku,

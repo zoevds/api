@@ -31,7 +31,7 @@ app.use("/index.html", express.static(__dirname + "/index.html"));
 // GET '/' is always what will be displayed on the home page of your application
 app.get("/", (req, res) => {});
 // Use individual routes when visiting these URLS
-app.use("/users", userRoute);
+app.use("/user", userRoute);
 app.use("/products", productsRoute);
 app.use("/orders", ordersRoute);
 
